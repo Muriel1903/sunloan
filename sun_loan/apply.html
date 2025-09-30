@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un prêt - SUN LOAN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* ===== RESET ===== */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+        body { line-height:1.6; background:#f9f9f9; color:#333; }
+        a { text-decoration:none; color:inherit; }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+        /* ===== HEADER ===== */
+        header { background:#fff; padding:15px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+        header .logo img { height:50px; }
+        nav ul { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+        nav ul li a { padding:8px 12px; border-radius:5px; transition:0.3s; display:flex; align-items:center; gap:5px; }
+        nav ul li a:hover { background:#0ea5e9; color:#fff; }
+
+        /* ===== PAGE TITLE ===== */
+        h1 { text-align:center; color:#0ea5e9; margin:40px 0 30px 0; }
+
+        /* ===== FORM ===== */
+        form { background:#fff; padding:30px 20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); max-width:600px; margin:0 auto; }
+        .form-group { margin-bottom:20px; }
+        .form-group label { display:block; margin-bottom:8px; font-weight:500; }
+        .form-group input { width:100%; padding:12px 15px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+        .btn { display:inline-block; background:#0ea5e9; color:#fff; padding:12px 25px; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; }
+        .btn:hover { background:#06b6d4; }
+
+        /* ===== RESULT MESSAGE ===== */
+        #apply-result { max-width:600px; margin:20px auto 40px auto; padding:15px; border-radius:8px; font-weight:500; }
+        .alert-success { background:#d1fae5; color:#065f46; border-left:4px solid #10b981; padding:10px 15px; border-radius:5px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:768px) {
+            nav ul { flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="SUN LOAN"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="apply.html"><i class="fas fa-hand-holding-usd"></i> Demander un prêt</a></li>
+                    <li><a href="myloans.html"><i class="fas fa-file-invoice-dollar"></i> Mes prêts</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Mon profil</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+                    <li><a href="register.html"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Demander un prêt</h1>
+
+        <form id="apply-form">
+            <div class="form-group">
+                <label for="amount">Montant demandé (FCFA)</label>
+                <input type="number" id="amount" name="amount" min="500" max="5000000" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Durée (mois)</label>
+                <input type="number" id="duration" name="duration" min="2" max="60" required>
+            </div>
+            <div class="form-group">
+                <label for="motif">Motif du prêt</label>
+                <input type="text" id="motif" name="motif" required>
+            </div>
+            <button type="submit" class="btn">Envoyer la demande</button>
+        </form>
+
+        <div id="apply-result" style="display:none;"></div>
+    </main>
+
+    <footer style="text-align:center; padding:20px 0; background:#111; color:#fff; border-top:1px solid #222;">
+        &copy; 2025 SUN LOAN. Tous droits réservés.
+    </footer>
+
+    <script>
+        document.getElementById('apply-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('apply-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="alert-success">Votre demande a été envoyée (simulation côté client).</div>';
+            // Reset form après soumission
+            this.reset();
+        });
+    </script>
+</body>
+</html>

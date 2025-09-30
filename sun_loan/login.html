@@ -1,0 +1,116 @@
+DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - SUN LOAN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* ===== RESET ===== */
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+        body { line-height:1.6; background:#f9f9f9; color:#333; }
+        a { text-decoration:none; color:inherit; }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+        /* ===== HEADER ===== */
+        header { background:#fff; padding:15px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+        header .logo img { height:50px; }
+        nav ul { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+        nav ul li a { padding:8px 12px; border-radius:5px; transition:0.3s; display:flex; align-items:center; gap:5px; }
+        nav ul li a:hover { background:#0ea5e9; color:#fff; }
+
+        /* ===== PAGE TITLE ===== */
+        h1 { text-align:center; color:#0ea5e9; margin:40px 0 30px 0; }
+
+        /* ===== FORM CARD ===== */
+        .form-card { background:#fff; padding:30px 20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); max-width:400px; margin:0 auto 40px auto; }
+        .form-card h2 { color:#0ea5e9; margin-bottom:20px; text-align:center; }
+        .form-group { margin-bottom:20px; }
+        .form-group label { display:block; margin-bottom:8px; font-weight:500; }
+        .form-group input { width:100%; padding:12px 15px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+        .btn { display:inline-block; background:#0ea5e9; color:#fff; padding:12px 25px; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; text-align:center; width:100%; }
+        .btn:hover { background:#06b6d4; }
+
+        /* ===== ALERT MESSAGE ===== */
+        #login-result { margin-top:20px; padding:15px; border-radius:8px; font-weight:500; display:none; max-width:400px; margin-left:auto; margin-right:auto; text-align:center; }
+        .alert-success { background:#d1fae5; color:#065f46; border-left:4px solid #10b981; padding:10px 15px; border-radius:5px; }
+        .alert-error { background:#fee2e2; color:#b91c1c; border-left:4px solid #ef4444; padding:10px 15px; border-radius:5px; }
+
+        /* ===== FOOTER ===== */
+        footer { text-align:center; padding:20px 0; background:#111; color:#fff; border-top:1px solid #222; }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:768px) {
+            nav ul { flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="SUN LOAN"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="apply.html"><i class="fas fa-hand-holding-usd"></i> Demander un prêt</a></li>
+                    <li><a href="myloans.html"><i class="fas fa-file-invoice-dollar"></i> Mes prêts</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Mon profil</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+                    <li><a href="register.html"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Connexion</h1>
+
+        <div class="form-card">
+            <h2>Se connecter</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+
+            <div id="login-result"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 SUN LOAN. Tous droits réservés.
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('login-result');
+
+            // Simulation simple côté client
+            if(email === "muriel@example.com" && password === "motdepasse") {
+                resultDiv.className = 'alert-success';
+                resultDiv.textContent = 'Connexion réussie ! (Simulation côté client)';
+            } else {
+                resultDiv.className = 'alert-error';
+                resultDiv.textContent = 'Email ou mot de passe incorrect.';
+            }
+            resultDiv.style.display = 'block';
+            this.reset();
+        });
+    </script>
+</body>
+</html>
